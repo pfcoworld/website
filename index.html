@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PFCO LTD — Your Financial Growth Partner</title>
+<meta name="description" content="PFCO LTD helps individuals and families save, borrow and invest with confidence. Earn 10% annual interest on savings, or 40% p.a. on our limited-time investment promo.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Urbanist:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #1B1B9B;
+    --navy-deep: #100F5C;
+    --pink: #F2079B;
+    --pink-deep: #C4067E;
+    --gold: #CE9A1B;
+    --bg-light: #F6F5FC;
+    --white: #FFFFFF;
+    --ink: #171640;
+    --ink-soft: #4A4977;
+    --line: #E3E1F2;
+    --radius: 14px;
+    --wrap: 1180px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Karla', system-ui, sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Urbanist', system-ui, sans-serif;
+    font-weight:800;
+    line-height:1.08;
+    margin:0;
+    color:var(--navy-deep);
+    letter-spacing:-0.01em;
+  }
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px;}
+
+  /* Buttons */
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:14px 26px;
+    border-radius:100px;
+    font-family:'Urbanist',sans-serif;
+    font-weight:700;
+    font-size:1rem;
+    border:2px solid transparent;
+    cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn:focus-visible{outline:3px solid var(--gold);outline-offset:3px;}
+  .btn-pink{background:var(--pink);color:var(--white);box-shadow:0 10px 24px -10px rgba(242,7,155,.55);}
+  .btn-pink:hover{background:var(--pink-deep);}
+  .btn-outline{background:transparent;border-color:rgba(255,255,255,.55);color:var(--white);}
+  .btn-outline:hover{background:rgba(255,255,255,.12);}
+  .btn-outline-navy{background:transparent;border-color:var(--navy);color:var(--navy);}
+  .btn-outline-navy:hover{background:var(--navy);color:var(--white);}
+
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-row{display:flex;align-items:center;justify-content:space-between;padding:14px 0;}
+  .brand{display:flex;align-items:center;gap:10px;}
+  .brand img{height:38px;width:auto;}
+  .brand span{font-family:'Urbanist',sans-serif;font-weight:800;font-size:1.15rem;color:var(--navy-deep);}
+  nav.links{display:flex;align-items:center;gap:32px;}
+  nav.links a{font-weight:600;font-size:.98rem;color:var(--ink);}
+  nav.links a:hover{color:var(--pink);}
+  .nav-cta{display:flex;align-items:center;gap:14px;}
+  .menu-btn{display:none;background:none;border:none;cursor:pointer;padding:6px;}
+  .menu-btn span{display:block;width:24px;height:2.5px;background:var(--navy-deep);margin:5px 0;border-radius:2px;}
+
+  /* Hero */
+  .hero{
+    background:linear-gradient(155deg, var(--navy-deep) 0%, var(--navy) 68%, #2A1E8E 100%);
+    color:var(--white);
+    padding:76px 0 88px;
+    overflow:hidden;
+  }
+  .hero .wrap{display:grid;grid-template-columns:1.25fr 1fr;gap:56px;align-items:center;}
+  .hero h1{font-size:clamp(2.1rem, 4vw, 3.15rem);color:var(--white);}
+  .hero h1 .accent{color:var(--pink);}
+  .hero p.lead{margin-top:20px;font-size:1.08rem;color:#DAD9F5;max-width:52ch;}
+  .hero .cta-row{display:flex;flex-wrap:wrap;gap:16px;margin-top:34px;}
+  .hero .fine{margin-top:16px;font-size:.85rem;color:#B9B7E6;}
+
+  .stat-stack{display:flex;flex-direction:column;gap:18px;}
+  .stat-card{
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.16);
+    border-radius:var(--radius);
+    padding:22px 24px;
+  }
+  .stat-card .num{font-family:'Urbanist',sans-serif;font-weight:900;font-size:2.4rem;color:var(--gold);line-height:1;}
+  .stat-card .label{margin-top:8px;font-size:.95rem;color:#E4E3F7;}
+
+  [data-animate]{animation:riseIn .7s ease both;}
+  [data-animate="delay"]{animation-delay:.15s;}
+  @keyframes riseIn{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+  @media (prefers-reduced-motion: reduce){[data-animate]{animation:none;}}
+
+  /* Section basics */
+  section{padding:84px 0;}
+  .section-head{max-width:56ch;margin-bottom:52px;}
+  .kicker-line{width:46px;height:3px;background:var(--pink);border-radius:3px;margin-bottom:18px;}
+  .section-head h2{font-size:clamp(1.6rem, 2.6vw, 2.15rem);}
+  .section-head p{margin-top:14px;color:var(--ink-soft);font-size:1.02rem;}
+
+  /* Services */
+  .service-row{
+    display:grid;grid-template-columns:64px 1fr;gap:26px;
+    padding:34px 0;border-top:1px solid var(--line);
+  }
+  .service-row:last-child{border-bottom:1px solid var(--line);}
+  .icon-badge{
+    width:56px;height:56px;border-radius:50%;
+    background:var(--navy-deep);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .icon-badge svg{width:26px;height:26px;stroke:var(--white);}
+  .service-content{display:grid;grid-template-columns:1.1fr 1.6fr;gap:24px;align-items:start;}
+  .service-content h3{font-size:1.3rem;color:var(--navy-deep);}
+  .service-content .tag{display:inline-block;margin-top:8px;font-size:.82rem;font-weight:700;color:var(--pink);}
+  .service-content p{color:var(--ink-soft);}
+  .service-content .link-row{margin-top:12px;}
+  .service-content .link-row a{font-weight:700;color:var(--navy);font-size:.94rem;border-bottom:2px solid var(--pink);padding-bottom:2px;}
+
+  /* Promo strip */
+  .promo{
+    background:var(--pink);
+    color:var(--white);
+    border-radius:20px;
+  }
+  .promo .wrap{padding:0;}
+  .promo-inner{
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:28px;
+    padding:46px 48px;
+  }
+  .promo h2{color:var(--white);font-size:clamp(1.4rem,2.4vw,1.9rem);max-width:32ch;}
+  .promo p{color:#FFE1F3;margin-top:10px;max-width:38ch;}
+  .promo .btn-pink{background:var(--white);color:var(--pink-deep);box-shadow:none;}
+  .promo .btn-pink:hover{background:#FFE9F5;}
+
+  /* About / trust */
+  .about-wrap{
+    display:grid;grid-template-columns:1fr 1.15fr;gap:60px;align-items:center;
+    background:var(--bg-light);
+    border-radius:22px;
+    padding:52px;
+  }
+  .about-wrap img{max-width:200px;margin:0 auto;}
+  .about-copy h2{font-size:clamp(1.5rem,2.4vw,2rem);}
+  .about-copy p{margin-top:16px;color:var(--ink-soft);}
+  .rc-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    margin-top:22px;padding:9px 16px;
+    border:1.5px solid var(--navy);border-radius:100px;
+    font-size:.85rem;font-weight:700;color:var(--navy);
+  }
+
+  /* Tagline banner */
+  .tagline-banner{
+    background:var(--navy-deep);
+    color:var(--white);
+    text-align:center;
+    padding:96px 0;
+    position:relative;
+  }
+  .tagline-banner .rule{width:60px;height:2px;background:rgba(255,255,255,.35);margin:0 auto 26px;}
+  .tagline-banner h2{
+    font-size:clamp(1.9rem, 5vw, 3.4rem);
+    color:var(--white);
+    max-width:14ch;margin:0 auto;
+  }
+  .tagline-banner .num{
+    color:var(--pink);
+    text-decoration:underline;
+    text-decoration-color:var(--pink);
+    text-decoration-thickness:3px;
+    text-underline-offset:6px;
+    font-style:italic;
+  }
+  .tagline-banner .sub{margin-top:24px;font-size:1.02rem;color:#C8C6EE;font-weight:600;letter-spacing:.02em;}
+
+  /* Contact */
+  .contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;}
+  .contact-list{display:flex;flex-direction:column;gap:0;}
+  .contact-item{
+    display:flex;gap:18px;align-items:flex-start;
+    padding:20px 0;border-top:1px solid var(--line);
+  }
+  .contact-item:last-child{border-bottom:1px solid var(--line);}
+  .contact-item .icon-badge{width:44px;height:44px;background:var(--bg-light);}
+  .contact-item .icon-badge svg{stroke:var(--navy-deep);width:20px;height:20px;}
+  .contact-item h4{margin:0 0 4px;font-family:'Urbanist',sans-serif;font-weight:700;font-size:.95rem;color:var(--navy-deep);}
+  .contact-item p, .contact-item a{color:var(--ink-soft);font-size:.98rem;}
+  .contact-item a:hover{color:var(--pink);}
+  .social-row{display:flex;gap:14px;margin-top:26px;}
+  .social-pill{
+    padding:9px 18px;border-radius:100px;border:1.5px solid var(--line);
+    font-weight:700;font-size:.88rem;color:var(--navy-deep);
+  }
+  .social-pill:hover{border-color:var(--pink);color:var(--pink);}
+
+  .contact-card{
+    background:var(--navy-deep);
+    color:var(--white);
+    border-radius:22px;
+    padding:44px 38px;
+    display:flex;flex-direction:column;gap:20px;
+    align-self:start;
+  }
+  .contact-card h3{color:var(--white);font-size:1.5rem;}
+  .contact-card p{color:#D3D2F1;}
+  .contact-card .btn-pink{width:fit-content;}
+
+  /* Footer */
+  footer{background:#0C0B45;color:#B9B7E0;padding:52px 0 30px;}
+  .footer-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:32px;padding-bottom:34px;border-bottom:1px solid rgba(255,255,255,.12);}
+  .footer-brand{display:flex;align-items:center;gap:12px;}
+  .footer-brand img{height:32px;}
+  .footer-brand span{font-family:'Urbanist',sans-serif;font-weight:800;color:var(--white);font-size:1.05rem;}
+  .footer-links{display:flex;gap:36px;flex-wrap:wrap;}
+  .footer-links a{font-size:.92rem;font-weight:600;color:#C7C6EA;}
+  .footer-links a:hover{color:var(--pink);}
+  .footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:26px;font-size:.85rem;}
+
+  /* Responsive */
+  @media (max-width:900px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .service-content{grid-template-columns:1fr;}
+    .about-wrap{grid-template-columns:1fr;padding:38px;text-align:center;}
+    .contact-grid{grid-template-columns:1fr;}
+    nav.links{display:none;}
+    .menu-btn{display:block;}
+    .nav-cta .btn-pink span.long{display:none;}
+    .nav-cta .btn-pink span.short{display:inline !important;}
+  }
+  @media (max-width:640px){
+    section{padding:60px 0;}
+    .promo-inner{padding:36px 26px;}
+    .tagline-banner{padding:70px 0;}
+    .footer-top,.footer-bottom{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav-row">
+    <a href="#top" class="brand">
+      <img src="assets/logo-mark.png" alt="PFCO LTD logo">
+      <span>PFCO LTD</span>
+    </a>
+    <nav class="links">
+      <a href="#services">Savings</a>
+      <a href="#services">Loans</a>
+      <a href="#services">Investment</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-pink" href="https://wa.me/2349056661773" target="_blank" rel="noopener" style="padding:11px 20px;font-size:.92rem;">
+        <span class="long">Chat on WhatsApp</span><span class="short" style="display:none;">Chat</span>
+      </a>
+      <button class="menu-btn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" style="padding-top:76px;">
+    <div class="wrap">
+      <div data-animate>
+        <h1>Saving is a lifestyle,<br>not an <span class="accent">option.</span></h1>
+        <p class="lead">PFCO LTD is a registered financial growth partner helping individuals and families in Ogun State save consistently, borrow responsibly, and invest with confidence — little by little.</p>
+        <div class="cta-row">
+          <a class="btn btn-pink" href="https://pfcoworld.github.io/pfcoinvestmentpromocalculator/" target="_blank" rel="noopener">Calculate your returns →</a>
+          <a class="btn btn-outline" href="https://wa.me/2349056661773" target="_blank" rel="noopener">Chat on WhatsApp</a>
+        </div>
+        <p class="fine">RC: 1976864 · Wuci Complex, Omoleye Bus Stop, Ogijo, Ogun State</p>
+      </div>
+      <div class="stat-stack" data-animate="delay">
+        <div class="stat-card">
+          <div class="num">10%</div>
+          <div class="label">Annual interest on your savings — start where you are.</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">40% p.a.</div>
+          <div class="label">Limited-time promo on investments of ₦100,000 and above.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker-line"></div>
+        <h2>Three ways to grow with PFCO</h2>
+        <p>Whichever stage you're at — building a habit, covering a need, or putting money to work — there's a straightforward way to do it here.</p>
+      </div>
+
+      <div class="service-row">
+        <div class="icon-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>
+        </div>
+        <div class="service-content">
+          <div>
+            <h3>Savings</h3>
+            <span class="tag">10% annual interest</span>
+          </div>
+          <div>
+            <p>Start small and stay consistent. A simple savings plan built for people who want to build the habit first and watch it compound — no large opening balance required.</p>
+            <div class="link-row"><a href="https://wa.me/2349056661773" target="_blank" rel="noopener">Start saving on WhatsApp</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="icon-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
+        </div>
+        <div class="service-content">
+          <div>
+            <h3>Loans</h3>
+            <span class="tag">Fast, flexible repayment</span>
+          </div>
+          <div>
+            <p>Straightforward loans for members who need funds now and want a clear, manageable repayment schedule — with a real person to talk you through the terms.</p>
+            <div class="link-row"><a href="https://wa.me/2349056661773" target="_blank" rel="noopener">Ask about a loan</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="icon-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>
+        </div>
+        <div class="service-content">
+          <div>
+            <h3>Investment</h3>
+            <span class="tag">40% p.a. promo, min ₦100,000</span>
+          </div>
+          <div>
+            <p>Put a lump sum to work. Choose to receive your interest monthly, or let it accumulate and collect capital plus interest together at maturity.</p>
+            <div class="link-row"><a href="https://pfcoworld.github.io/pfcoinvestmentpromocalculator/" target="_blank" rel="noopener">Open the returns calculator</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROMO STRIP -->
+  <section style="padding-top:0;">
+    <div class="wrap">
+      <div class="promo">
+        <div class="promo-inner">
+          <div>
+            <h2>See exactly what you'll earn before you commit.</h2>
+            <p>Enter an amount and a period, pick how you want to be paid, and get your numbers instantly.</p>
+          </div>
+          <a class="btn btn-pink" href="https://pfcoworld.github.io/pfcoinvestmentpromocalculator/" target="_blank" rel="noopener">Open the calculator →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="about-wrap">
+        <img src="assets/logo-full.png" alt="PFCO LTD">
+        <div class="about-copy">
+          <h2>Your financial growth partner</h2>
+          <p>PFCO LTD is a registered company built around one idea: your future deserves preparation. We help people start where they are, stay consistent, and overcome the small impulses that get in the way of real savings — persistent and diligent, one deposit at a time.</p>
+          <div class="rc-badge">RC: 1976864</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAGLINE BANNER -->
+  <section class="tagline-banner">
+    <div class="wrap">
+      <div class="rule"></div>
+      <h2>With God, we are <span class="num">100</span> of <span class="num">100</span>.</h2>
+      <p class="sub">Save Today. Grow Tomorrow. Enjoy Life.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker-line"></div>
+        <h2>Let's talk</h2>
+        <p>Reach us on WhatsApp for the fastest response, or use any of the details below.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-list">
+
+          <div class="contact-item">
+            <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></div>
+            <div>
+              <h4>WhatsApp</h4>
+              <a href="https://wa.me/2349056661773" target="_blank" rel="noopener">+234 905 666 1773</a><br>
+              <a href="https://wa.me/2349068606393" target="_blank" rel="noopener">0906 860 6393</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg></div>
+            <div>
+              <h4>Email</h4>
+              <a href="mailto:pfcoworld@gmail.com">pfcoworld@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div>
+              <h4>Office</h4>
+              <p>Wuci Complex, Omoleye Bus Stop,<br>Ogijo, Ogun State</p>
+            </div>
+          </div>
+
+          <div class="social-row">
+            <a class="social-pill" href="https://facebook.com/pfcoworld" target="_blank" rel="noopener">Facebook</a>
+            <a class="social-pill" href="https://instagram.com/pfcoltd" target="_blank" rel="noopener">Instagram</a>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <h3>Ready to start?</h3>
+          <p>Send us a message and we'll walk you through savings, loans, or investment — whichever fits where you are right now.</p>
+          <a class="btn btn-pink" href="https://wa.me/2349056661773" target="_blank" rel="noopener">Message us on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <a href="#top" class="footer-brand">
+        <img src="assets/logo-mark.png" alt="PFCO LTD">
+        <span>PFCO LTD</span>
+      </a>
+      <nav class="footer-links">
+        <a href="#services">Savings</a>
+        <a href="#services">Loans</a>
+        <a href="#services">Investment</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="https://pfcoworld.github.io/pfcoinvestmentpromocalculator/" target="_blank" rel="noopener">Calculator</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 PFCO LTD · RC: 1976864. All rights reserved.</span>
+      <span>Wuci Complex, Omoleye Bus Stop, Ogijo, Ogun State</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const menuBtn = document.querySelector('.menu-btn');
+  const navLinks = document.querySelector('nav.links');
+  if (menuBtn && navLinks) {
+    menuBtn.addEventListener('click', () => {
+      const isOpen = navLinks.style.display === 'flex';
+      navLinks.style.display = isOpen ? 'none' : 'flex';
+      navLinks.style.flexDirection = 'column';
+      navLinks.style.position = 'absolute';
+      navLinks.style.top = '64px';
+      navLinks.style.left = '0';
+      navLinks.style.right = '0';
+      navLinks.style.background = '#FFFFFF';
+      navLinks.style.padding = '20px 28px';
+      navLinks.style.borderBottom = '1px solid #E3E1F2';
+      navLinks.style.gap = '18px';
+    });
+  }
+</script>
+
+</body>
+</html>
